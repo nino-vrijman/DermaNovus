@@ -27,7 +27,7 @@ public class Administratie {
      * niet correct zijn
      */
     public boolean logIn(String gebruikersnaam, String wachtwoord) {
-        return false;
+        return db.logIn(gebruikersnaam, wachtwoord);
     }
 
     /**
@@ -39,7 +39,7 @@ public class Administratie {
      * de status van het bericht niet gewijzigd is.
      */
     public boolean setBerichtGelezen(Bericht b) {
-        return false;
+        return db.setBerichtGelezen(b);
     }
 
     /**
@@ -50,7 +50,7 @@ public class Administratie {
      * 'false' als de adresgegevens niet gewijzigd zijn.
      */
     public boolean wijzigAdresGegevens(Patient p) {
-        return false;
+        return db.wijzigAdresGegevens(p);
     }
 
     /**
@@ -61,7 +61,7 @@ public class Administratie {
      * 'false' als het telefoonnummer niet gewijzigd is.
      */
     public boolean wijzigTelefoonnummer(Gebruiker g) {
-        return false;
+        return db.wijzigTelefoonnummer(g);
     }
 
     /**
@@ -72,7 +72,7 @@ public class Administratie {
      * 'false' als het e-mailadres niet gewijzigd is.
      */
     public boolean wijzigEmailadres(Gebruiker g) {
-        return false;
+        return db.wijzigEmailadres(g);
     }
 
     /**
@@ -83,7 +83,7 @@ public class Administratie {
      * als de avatar niet gewijzigd is.
      */
     public boolean wijzigAvatar(Gebruiker g) {
-        return false;
+        return db.wijzigAvatar(g);
     }
 
     /**
@@ -94,7 +94,7 @@ public class Administratie {
      * als de beoordeling van de expert niet gewijzigd is.
      */
     public boolean beoordeelExpert(Behandeling b) {
-        return false;
+        return db.beoordeelExpert(b);
     }
 
     /**
@@ -105,7 +105,7 @@ public class Administratie {
      * als de status van een behandeling niet gewijzigd is.
      */
     public boolean wijzigBehandelingStatus(Behandeling b) {
-        return false;
+        return db.wijzigBehandelingStatus(b);
     }
 
     /**
@@ -117,7 +117,7 @@ public class Administratie {
      * nieuwe bericht niet is geplaatst.
      */
     public boolean plaatsBericht(Bericht ber, Behandeling beh) {
-        return false;
+        return db.plaatsBericht(ber, beh);
     }
 
     /**
@@ -129,7 +129,7 @@ public class Administratie {
      * het recept niet is toegevoegd.
      */
     public boolean schrijfReceptUit(Recept rec, Behandeling beh) {
-        return false;
+        return db.schrijfReceptUit(rec, beh);
     }
 
     /**
@@ -141,6 +141,18 @@ public class Administratie {
      * de status van het recept niet is gewijzigd.
      */
     public boolean veranderGoedkeurigRecept(Recept rec, Behandeling beh) {
-        return false;
+        return db.veranderGoedkeurigRecept(rec, beh);
+    }
+
+    /**
+     * Voegt een nieuwe voorraad van een medicijn toe aan de bijbehorende apotheek.
+     *
+     * @param voorraad De voorraad die toegevoegd moet worden.
+     * @param apotheek De apotheek waaraan de voorraad toegevoegd moet worden.
+     * @return Return 'true' als de voorraad aan de database is toegevoegd. Return 'false' als de
+     * voorraad niet aan de database is toegevoegd.
+     */
+    public boolean voegVoorraadToe(Voorraad voorraad, Apotheek apotheek) {
+        return db.voegVoorraadToe(voorraad, apotheek);
     }
 }

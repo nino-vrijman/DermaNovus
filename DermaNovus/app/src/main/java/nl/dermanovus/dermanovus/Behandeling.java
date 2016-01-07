@@ -79,6 +79,10 @@ public class Behandeling {
      * @return Return true als het bericht geplaatst is. Return false als het bericht niet geplaatst is.
      */
     public boolean plaatsBericht(Bericht nieuwBericht) {
+        if (adm.plaatsBericht(nieuwBericht, this)) {
+            this.berichten.add(nieuwBericht);
+            return true;
+        }
         return false;
     }
 
@@ -89,6 +93,10 @@ public class Behandeling {
      * @return Return true als het recept uitgeschreven is. Return false als het recept niet uitgeschreven is.
      */
     public boolean schrijfReceptUit(Recept nieuwRecept) {
+        if (adm.schrijfReceptUit(nieuwRecept, this)) {
+            this.recepten.add(nieuwRecept);
+            return true;
+        }
         return false;
     }
 }
