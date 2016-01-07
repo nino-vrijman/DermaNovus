@@ -143,4 +143,16 @@ public class Database {
     public boolean veranderGoedkeurigRecept(Recept rec, Behandeling beh) {
         return false;
     }
+
+    /**
+     * Voegt een nieuwe voorraad van een medicijn toe aan de bijbehorende apotheek.
+     *
+     * @param voorraad De voorraad die toegevoegd moet worden.
+     * @param apotheek De apotheek waaraan de voorraad toegevoegd moet worden.
+     * @return Return 'true' als de voorraad aan de database is toegevoegd. Return 'false' als de
+     * voorraad niet aan de database is toegevoegd.
+     */
+    public boolean voegVoorraadToe(Voorraad voorraad, Apotheek apotheek) {
+        return false;
+    }
 }

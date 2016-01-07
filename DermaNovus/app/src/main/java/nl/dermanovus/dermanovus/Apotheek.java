@@ -14,6 +14,7 @@ public class Apotheek {
     private String webadres;
     private ArrayList<Voorraad> voorraad;
     private Ziekenhuis isAangeslotenBij;
+    private Administratie adm;
 
     /**
      * Creëert een nieuwe apotheek.
@@ -35,5 +36,21 @@ public class Apotheek {
         this.webadres = webadres;
         this.voorraad = new ArrayList<>();
         this.isAangeslotenBij = isAangeslotenBij;
+        this.adm = Administratie.getInstance();
+    }
+
+    /**
+     * Voegt een nieuwe voorraad van een medicijn toe aan de bijbehorende apotheek.
+     *
+     * @param voorraad De voorraad die toegevoegd moet worden.
+     * @return Return 'true' als de voorraad aan de database is toegevoegd. Return 'false' als de
+     * voorraad niet aan de database is toegevoegd.
+     */
+    public boolean voegVoorraadToe(Voorraad voorraad) {
+        if (adm.voegVoorraadToe(voorraad, this)) {
+            this.voorraad.add(voorraad);
+            return true;
+        }
+        return false;
     }
 }

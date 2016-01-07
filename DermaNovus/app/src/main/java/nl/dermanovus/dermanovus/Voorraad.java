@@ -7,6 +7,14 @@ public class Voorraad {
     private int voorraad;
     private Medicijn medicijn;
 
+    public int getVoorraad() {
+        return voorraad;
+    }
+
+    public void setVoorraad(int voorraad) {
+        this.voorraad = voorraad;
+    }
+
     /**
      * Creëert een nieuwe voorraad van een apotheek van een bepaald medicijn.
      *
