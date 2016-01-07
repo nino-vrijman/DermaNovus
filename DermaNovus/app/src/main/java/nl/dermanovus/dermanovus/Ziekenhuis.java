@@ -1,5 +1,7 @@
 package nl.dermanovus.dermanovus;
 
+import java.util.ArrayList;
+
 /**
  * @author Nino Vrijman
  */
@@ -10,6 +12,7 @@ public class Ziekenhuis {
     private String postcode;
     private int huisnummer;
     private String telefoonnummer;
+    private ArrayList<Expert> heeftInDienst;
 
     /**
      * Creëert een nieuw ziekenhuis.
@@ -28,5 +31,6 @@ public class Ziekenhuis {
         this.postcode = postcode;
         this.huisnummer = huisnummer;
         this.telefoonnummer = telefoonnummer;
+        this.heeftInDienst = new ArrayList<>();
     }
 }

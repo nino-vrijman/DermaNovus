@@ -13,7 +13,7 @@ public class Administratie {
 
     public static Administratie getInstance() {
         if (instance == null) {
-            instance = new Administratie();
+            instance = new Administratie(db);
         }
         return instance;
     }
