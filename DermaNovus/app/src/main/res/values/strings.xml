@@ -37,8 +37,4 @@
     <string name="error_geen_wachtwoord">Voer uw wachtwoord in</string>
     <string name="error_geen_gebruikersnaam">Voer uw gebruikersnaam in</string>
     <string name="error_verkeerde_inloggegevens">De ingevoerde inloggegevens zijn onjuist</string>
-    <string name="title_activity_recepten">Recepten</string>
-
-    <string name="hello_world">Hello world!</string>
-    <string name="title_activity_recepten_scherm">ReceptenScherm</string>
 </resources>
