@@ -1,11 +1,12 @@
 package nl.dermanovus.dermanovus.Schermen;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-
+import android.view.View;
 import nl.dermanovus.dermanovus.R;
 
 public class ReceptenScherm extends AppCompatActivity {
@@ -36,5 +37,10 @@ public class ReceptenScherm extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void btnHome(View view) {
+        startActivity(new Intent(this,Hoofdscherm.class));
+
     }
 }

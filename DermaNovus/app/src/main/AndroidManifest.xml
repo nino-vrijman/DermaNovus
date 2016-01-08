@@ -33,7 +33,7 @@
         </activity>
         <activity
             android:name=".Schermen.ReceptenScherm"
-            android:label="@string/title_activity_recepten_scherm"
+            android:label="ok"
             >
         </activity>
 

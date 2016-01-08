@@ -20,7 +20,11 @@
         android:layout_alignTop="@+id/tool_bar"
         android:layout_alignLeft="@+id/tool_bar"
         android:layout_alignStart="@+id/tool_bar"
-        android:background="@drawable/ic_home" />
+        android:background="@drawable/ic_arrow_back_black_24dp"
+        android:maxHeight="8dp"
+        android:maxWidth="8dp"
+        android:onClick="btnHome"
+        android:layout_alignBottom="@+id/tool_bar" />
 
 
 </RelativeLayout>
