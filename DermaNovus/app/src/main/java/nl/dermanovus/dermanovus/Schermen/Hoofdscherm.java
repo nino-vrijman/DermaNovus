@@ -1,17 +1,22 @@
 package nl.dermanovus.dermanovus.Schermen;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import nl.dermanovus.dermanovus.R;
@@ -19,17 +24,14 @@ import nl.dermanovus.dermanovus.R;
 
 public class Hoofdscherm extends AppCompatActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
-    //First We Declare Titles And Icons For Our Navigation Drawer List View
-    //This Icons And Titles Are holded in an Array as you can see
-
+    //Titels van de navigatie drawer aanmaken
+    //Optionele icons van de navigatie items deze staan op dit moment uit
     String TITLES[] = {"Overzicht","Berichten","Recepten","Uw gegevens"};
     int ICONS[] = {R.drawable.ic_home,R.drawable.ic_home,R.drawable.ic_home,R.drawable.ic_home};
-
-    //Similarly we Create a String Resource for the name and email in the header view
-    //And we also create a int resource for profile picture in the header view
-
+    //String en email voor de navigatie drawer
     String NAME = "Kevin Jetten";
     String EMAIL = "Jetten.Kevin@gmail.com";
+    //Profielfoto
     int PROFILE = R.drawable.friendlyface;
 
     private Toolbar toolbar;                              // Declaring the Toolbar Object
@@ -41,8 +43,19 @@ public class Hoofdscherm extends AppCompatActivity implements NavigationDrawerFr
 
     ActionBarDrawerToggle mDrawerToggle;                  // Declaring Action Bar Drawer Toggle
 
-
-
+    //Listviews aanmaken voor de behandelingen
+    ListView actieveBehandelingen;
+    ListView beeindigdeBehandingen;
+    //Stringarray voor de behandelingen
+    String[] actieveBehandelingenTitel = {"Exceem op linkerarm","Verdachte moedervlek"};
+    String[] beeindigdeBehandlingenTitel = {"Wratje op voet","Verdachte moedervlek"};
+    String[] actieveBehandelingOmschrijving = {"Verstuur foto","Wordt behandeld"};
+    String[] beeindigdeBehandelingOmschrijving = {"Voltooid 13 Januari 2015","Doorverwezen ziekenhuis"};
+    String[] actieveBehandelingenID = {"1","2"};
+    String[] beeindigdeBehandelingenID = {"1","2"};
+    //Images voor de behandelingen
+    Integer[] actieveBehandelingenImg = {R.drawable.pic1, R.drawable.omeprazol};
+    Integer[] beeindigdeBehandelingenImg = {R.drawable.pic1, R.drawable.omeprazol};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,48 +68,116 @@ public class Hoofdscherm extends AppCompatActivity implements NavigationDrawerFr
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
 
-
-
-
         mRecyclerView = (RecyclerView) findViewById(R.id.RecyclerView); // Assigning the RecyclerView Object to the xml View
-
         mRecyclerView.setHasFixedSize(true);                            // Letting the system know that the list objects are of fixed size
-
         mAdapter = new MyAdapter(TITLES,ICONS,NAME,EMAIL,PROFILE);       // Creating the Adapter of MyAdapter class(which we are going to see in a bit)
         // And passing the titles,icons,header view name, header view email,
         // and header view profile picture
 
-        mRecyclerView.setAdapter(mAdapter);                              // Setting the adapter to RecyclerView
+        mRecyclerView.setAdapter(mAdapter);// Setting the adapter to RecyclerView
+        //Listener voor de knoppen van de navigatie
+        final GestureDetector mGestureDetector = new GestureDetector(Hoofdscherm.this, new GestureDetector.SimpleOnGestureListener() {
+
+            @Override public boolean onSingleTapUp(MotionEvent e) {
+                return true;
+            }
+
+        });
+        mRecyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+            @Override
+            public boolean onInterceptTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
+                View child = recyclerView.findChildViewUnder(motionEvent.getX(), motionEvent.getY());
+
+                if (child != null && mGestureDetector.onTouchEvent(motionEvent)) {
+                    Drawer.closeDrawers();
+                    int position = recyclerView.getChildPosition(child);
+                    switch(position){
+                        case 1:
+                            break;
+                        case 2:
+                            //StartActivity Berichten
+                            break;
+                        case 3:
+                            //StartActivity Recepten
+                            break;
+                        case 4:
+                            //StartActivty UwGegevens
+                            startActivity(new Intent(Hoofdscherm.this,DermaCamActivity.class));
+                            break;
+                    }
+                    return true;
+                }
+                return false;
+            }
+
+            @Override
+            public void onTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+            }
+        });
 
         mLayoutManager = new LinearLayoutManager(this);                 // Creating a layout Manager
-
         mRecyclerView.setLayoutManager(mLayoutManager);                 // Setting the layout Manager
-
-
         Drawer = (DrawerLayout) findViewById(R.id.DrawerLayout);        // Drawer object Assigned to the view
         mDrawerToggle = new ActionBarDrawerToggle(this,Drawer,toolbar,R.string.openDrawer,R.string.closeDrawer){
 
             @Override
             public void onDrawerOpened(View drawerView) {
-
                 super.onDrawerOpened(drawerView);
-
                 // code here will execute once the drawer is opened( As I dont want anything happened whe drawer is
                 // open I am not going to put anything here)
             }
-
             @Override
+
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
                 // Code here will execute once drawer is closed
             }
-
-
-
         }; // Drawer Toggle Object Made
         Drawer.setDrawerListener(mDrawerToggle); // Drawer Listener set to the Drawer toggle
-        mDrawerToggle.syncState();               // Finally we set the drawer toggle sync State
 
+
+        mDrawerToggle.syncState();               // Finally we set the drawer toggle sync State
+        //ontvangen van clicks op de navigatie items
+
+        //TODO Uit de database data ophalen over behandelingen en deze in de lists zetten
+        //Listview actieve behandelingen vullen
+        CustomListAdapter adapterActieveBehandelingen = new CustomListAdapter(this, actieveBehandelingenTitel, actieveBehandelingenImg,actieveBehandelingOmschrijving);
+        actieveBehandelingen=(ListView)findViewById(R.id.lvActieveBehandelingen);
+        actieveBehandelingen.setAdapter(adapterActieveBehandelingen);
+
+        actieveBehandelingen.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String Selecteditem = actieveBehandelingenTitel[position];
+                Toast.makeText(getApplicationContext(), Selecteditem, Toast.LENGTH_SHORT).show();
+                //TODO redirecten van de activity naar Behandeling met ID in shared preference
+                SharedPreferences sharedPref  = getSharedPreferences("Behandeling", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putString("BehandelingID", actieveBehandelingenID[position]);
+                editor.commit();
+            }
+        });
+        //Listview beeindigde behandelingen vullen
+        CustomListAdapter adapterBeeindigde = new CustomListAdapter(this, beeindigdeBehandlingenTitel, beeindigdeBehandelingenImg,beeindigdeBehandelingOmschrijving);
+        beeindigdeBehandingen=(ListView)findViewById(R.id.lvBeeindigdeBehandelingen);
+        beeindigdeBehandingen.setAdapter(adapterBeeindigde);
+
+        beeindigdeBehandingen.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String Selecteditem= beeindigdeBehandlingenTitel[position];
+                Toast.makeText(getApplicationContext(), Selecteditem, Toast.LENGTH_SHORT).show();
+                //TODO redirecten van de activity naar Behandeling met ID in shared preference
+                SharedPreferences sharedPref  = getSharedPreferences("Behandeling", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putString("BehandelingID", actieveBehandelingenID[position]);
+                editor.commit();
+            }
+        });
     }
 
 
@@ -124,6 +205,6 @@ public class Hoofdscherm extends AppCompatActivity implements NavigationDrawerFr
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
-        Toast.makeText(this, "Example action.", Toast.LENGTH_SHORT).show();
+
     }
 }

@@ -36,8 +36,8 @@
 
         <ListView
             android:layout_width="match_parent"
-            android:layout_height="140dp"
-            android:id="@+id/listView" />
+            android:layout_height="150dp"
+            android:id="@+id/lvActieveBehandelingen" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -52,7 +52,7 @@
         <ListView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/listView2" />
+            android:id="@+id/lvBeeindigdeBehandelingen" />
 
     </LinearLayout>
 
