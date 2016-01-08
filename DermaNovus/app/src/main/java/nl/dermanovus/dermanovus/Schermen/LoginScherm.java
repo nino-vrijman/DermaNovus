@@ -55,7 +55,7 @@ public class LoginScherm extends AppCompatActivity implements LoaderCallbacks<Cu
      * TODO: remove after connecting to a real authentication system.
      */
     private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "foo@example.com:hello", "bar@example.com:world", "nino:test"
+            "foo@example.com:hello", "bar@example.com:world", "nino:test", "kevin:test", "jan:test", "arjen:test"
     };
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
