@@ -13,8 +13,11 @@ public abstract class Gebruiker {
     private String telefoonnummer;
     private String emailadres;
     private String imageJSON;
-
     private Administratie adm;
+
+    public int getId() {
+        return id;
+    }
 
     public String getTelefoonnummer() {
         return telefoonnummer;
