@@ -5,15 +5,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
+
 import nl.dermanovus.dermanovus.R;
 
 /**
  * Created by hp1 on 28-12-2014.
  */
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>  {
+public class NavigatorCustomAdapter extends RecyclerView.Adapter<NavigatorCustomAdapter.ViewHolder>  {
 
     private static final int TYPE_HEADER = 0;  // Declaring Variable to Understand which View is being worked on
     // IF the view under inflation and population is header or Item
@@ -67,7 +66,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>  {
 
 
 
-    MyAdapter(String Titles[],int Icons[],String Name,String Email, int Profile){ // MyAdapter Constructor with titles and icons parameter
+    NavigatorCustomAdapter(String Titles[], int Icons[], String Name, String Email, int Profile){ // NavigatorCustomAdapter Constructor with titles and icons parameter
         // titles, icons, name, email, profile pic are passed from the main activity as we
         mNavTitles = Titles;                //have seen earlier
         mIcons = Icons;
@@ -88,7 +87,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>  {
     // and pass it to the view holder
 
     @Override
-    public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public NavigatorCustomAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         if (viewType == TYPE_ITEM) {
             View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_row,parent,false); //Inflating the layout
@@ -117,7 +116,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>  {
     // Tells us item at which position is being constructed to be displayed and the holder id of the holder object tell us
     // which view type is being created 1 for item row
     @Override
-    public void onBindViewHolder(MyAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(NavigatorCustomAdapter.ViewHolder holder, int position) {
         if(holder.Holderid ==1) {                              // as the list view is going to be called after the header view so we decrement the
             // position by 1 and pass it to the holder while setting the text and image
             holder.textView.setText(mNavTitles[position - 1]); // Setting the Text with the array of our Titles

@@ -50,8 +50,8 @@ public class Hoofdscherm extends AppCompatActivity implements NavigationDrawerFr
     String[] beeindigdeBehandlingenTitel = {"Wratje op voet","Verdachte moedervlek"};
     String[] actieveBehandelingOmschrijving = {"Verstuur foto","Wordt behandeld"};
     String[] beeindigdeBehandelingOmschrijving = {"Voltooid 13 Januari 2015","Doorverwezen ziekenhuis"};
-    String[] actieveBehandelingenID = {"1","2"};
-    String[] beeindigdeBehandelingenID = {"1","2"};
+    Integer[] actieveBehandelingenID = {1,2};
+    Integer[] beeindigdeBehandelingenID = {1,2};
     //Images voor de behandelingen
     Integer[] actieveBehandelingenImg = {R.drawable.pic1, R.drawable.omeprazol};
     Integer[] beeindigdeBehandelingenImg = {R.drawable.pic1, R.drawable.omeprazol};
@@ -69,7 +69,7 @@ public class Hoofdscherm extends AppCompatActivity implements NavigationDrawerFr
 
         mRecyclerView = (RecyclerView) findViewById(R.id.RecyclerView); // Assigning the RecyclerView Object to the xml View
         mRecyclerView.setHasFixedSize(true);                            // Letting the system know that the list objects are of fixed size
-        mAdapter = new MyAdapter(TITLES,ICONS,NAME,EMAIL,PROFILE);       // Creating the Adapter of MyAdapter class(which we are going to see in a bit)
+        mAdapter = new NavigatorCustomAdapter(TITLES,ICONS,NAME,EMAIL,PROFILE);       // Creating the Adapter of NavigatorCustomAdapter class(which we are going to see in a bit)
         // And passing the titles,icons,header view name, header view email,
         // and header view profile picture
 
@@ -157,7 +157,7 @@ public class Hoofdscherm extends AppCompatActivity implements NavigationDrawerFr
                 //TODO redirecten van de activity naar Behandeling met ID in shared preference
                 SharedPreferences sharedPref  = getSharedPreferences("Behandeling", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPref.edit();
-                editor.putString("BehandelingID", actieveBehandelingenID[position]);
+                editor.putInt("BehandelingID", actieveBehandelingenID[position]);
                 editor.commit();
             }
         });
@@ -174,7 +174,7 @@ public class Hoofdscherm extends AppCompatActivity implements NavigationDrawerFr
                 //TODO redirecten van de activity naar Behandeling met ID in shared preference
                 SharedPreferences sharedPref  = getSharedPreferences("Behandeling", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPref.edit();
-                editor.putString("BehandelingID", actieveBehandelingenID[position]);
+                editor.putInt("BehandelingID", beeindigdeBehandelingenID[position]);
                 editor.commit();
             }
         });
