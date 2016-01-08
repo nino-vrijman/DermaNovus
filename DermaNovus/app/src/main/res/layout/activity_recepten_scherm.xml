@@ -1,0 +1,26 @@
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/DrawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:elevation="7dp"
+  >
+
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/toolbar"
+      >
+    </include>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButton"
+        android:layout_alignTop="@+id/tool_bar"
+        android:layout_alignLeft="@+id/tool_bar"
+        android:layout_alignStart="@+id/tool_bar"
+        android:background="@drawable/ic_home" />
+
+
+</RelativeLayout>

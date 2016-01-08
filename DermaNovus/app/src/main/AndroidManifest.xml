@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="nl.dermanovus.dermanovus" >
 
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,15 +19,24 @@
             android:theme="@style/FullscreenTheme" />
         <activity
             android:name=".Schermen.Hoofdscherm"
-            android:label="@string/title_activity_hoofdscherm" >
+            android:label="@string/title_activity_hoofdscherm"
+          >
+        </activity>
+        <activity
+            android:name=".Schermen.LoginScherm"
+            android:label="@string/title_activity_login_scherm" >
             <intent-filter>
                 <action android:name="android.intent.action.main" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".Schermen.InfoScherm"
-            android:label="@string/title_activity_info_scherm" >
+            android:name=".Schermen.ReceptenScherm"
+            android:label="@string/title_activity_recepten_scherm"
+            >
         </activity>
+
     </application>
 
 </manifest>

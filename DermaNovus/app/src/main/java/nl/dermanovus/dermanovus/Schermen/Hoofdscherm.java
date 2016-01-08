@@ -99,6 +99,7 @@ public class Hoofdscherm extends AppCompatActivity implements NavigationDrawerFr
                             break;
                         case 3:
                             //StartActivity Recepten
+                            startActivity(new Intent(Hoofdscherm.this,ReceptenScherm.class));
                             break;
                         case 4:
                             //StartActivty UwGegevens
