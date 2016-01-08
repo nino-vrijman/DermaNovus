@@ -4,4 +4,19 @@
     <string name="title_activity_derma_cam">DermaCamActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+        <string name="title_activity_hoofdscherm">Overzicht</string>
+
+    <string name="title_section1">Overzicht</string>
+    <string name="title_section2">Berichten</string>
+    <string name="title_section3">Recepten</string>
+    <string name="title_section4">Uw gegevens</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_example"></string>
+    <string name="openDrawer"> Open</string>
+    <string name="closeDrawer">Close</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_info_scherm">InfoScherm</string>
 </resources>
