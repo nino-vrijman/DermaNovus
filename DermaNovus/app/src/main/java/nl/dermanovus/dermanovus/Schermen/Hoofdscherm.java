@@ -159,6 +159,7 @@ public class Hoofdscherm extends AppCompatActivity implements NavigationDrawerFr
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putInt("BehandelingID", actieveBehandelingenID[position]);
                 editor.commit();
+                startActivity(new Intent(Hoofdscherm.this, BehandelingActivity.class));
             }
         });
         //Listview beeindigde behandelingen vullen
@@ -176,6 +177,7 @@ public class Hoofdscherm extends AppCompatActivity implements NavigationDrawerFr
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putInt("BehandelingID", beeindigdeBehandelingenID[position]);
                 editor.commit();
+                startActivity(new Intent(Hoofdscherm.this, BehandelingActivity.class));
             }
         });
     }

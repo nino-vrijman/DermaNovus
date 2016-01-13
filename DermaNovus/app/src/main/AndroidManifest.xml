@@ -23,7 +23,7 @@
             android:theme="@style/FullscreenTheme" />
         <activity
             android:name=".Schermen.Hoofdscherm"
-            android:label="@string/title_activity_hoofdscherm"></activity>
+            android:label="@string/title_activity_hoofdscherm" />
         <activity
             android:name=".Schermen.LoginScherm"
             android:label="@string/title_activity_login_scherm">
@@ -36,8 +36,11 @@
         </activity>
         <activity
             android:name=".Schermen.ReceptenScherm"
-            android:label="ok"></activity>
-        <activity android:name=".Schermen.PreviewScherm"></activity>
+            android:label="ok" />
+        <activity android:name=".Schermen.PreviewScherm" />
+        <activity android:name=".Schermen.BehandelingActivity" />
+        <activity android:name=".Schermen.BerichtActivity" />
+        <activity android:name=".Schermen.NieuwBerichtActivity"></activity>
     </application>
 
 </manifest>
