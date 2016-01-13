@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="nl.dermanovus.dermanovus.Schermen.NieuwBerichtActivity">
+
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/toolbar"
+        >
+    </include>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/backButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/ic_arrow_back_black_18px"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
+        android:onClick="btnHome_Click"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tool_bar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Inhoud:"
+            android:textStyle="bold"
+            android:textColor="@android:color/darker_gray"
+            android:id="@+id/textView4"
+            android:layout_below="@+id/relativeLayout"
+            android:layout_alignLeft="@+id/relativeLayout"
+            android:layout_alignStart="@+id/relativeLayout"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:ems="10"
+            android:id="@+id/editText"
+            android:layout_below="@+id/textView4"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom" >
+
+        <Button
+            style="?android:textAppearanceSmall"
+            android:id="@+id/btnPlaatsReactie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="plaats bericht"
+            android:textStyle="bold"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:paddingBottom="0dp"
+            android:background="#71b0b1"
+            android:textColor="#f5f5f5"
+            android:layout_gravity="bottom"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:onClick="btnPlaatsReactie_Click"
+            android:nestedScrollingEnabled="false" />
+
+        <Button
+            style="?android:textAppearanceSmall"
+            android:id="@+id/btnVoegFotosToe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="voeg foto&apos;s toe"
+            android:textStyle="bold"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:paddingBottom="0dp"
+            android:background="#71b0b1"
+            android:textColor="#f5f5f5"
+            android:layout_gravity="bottom"
+            android:onClick="btnVoegFotosToe_Click"
+            android:nestedScrollingEnabled="true"
+            android:layout_above="@+id/btnPlaatsReactie"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+    </RelativeLayout>
+
+</RelativeLayout>
