@@ -19,4 +19,8 @@ public class BerichtActivity extends AppCompatActivity {
     public void btnHome_Click(View view) {
         finish();
     }
+
+    public void btnReageer_Click(View view) {
+        startActivity(new Intent(this, NieuwBerichtActivity.class));
+    }
 }
