@@ -6,6 +6,10 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application
         android:allowBackup="true"
@@ -19,8 +23,7 @@
             android:theme="@style/FullscreenTheme" />
         <activity
             android:name=".Schermen.Hoofdscherm"
-            android:label="@string/title_activity_hoofdscherm">
-        </activity>
+            android:label="@string/title_activity_hoofdscherm"></activity>
         <activity
             android:name=".Schermen.LoginScherm"
             android:label="@string/title_activity_login_scherm">
@@ -28,15 +31,13 @@
                 <action android:name="android.intent.action.main" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".Schermen.ReceptenScherm"
-            android:label="ok"
-            >
-        </activity>
-
+            android:label="ok"></activity>
+        <activity android:name=".Schermen.PreviewScherm"></activity>
     </application>
 
 </manifest>

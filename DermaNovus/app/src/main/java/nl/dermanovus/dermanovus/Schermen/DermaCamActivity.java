@@ -1,14 +1,19 @@
 package nl.dermanovus.dermanovus.Schermen;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.MediaStore;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import nl.dermanovus.dermanovus.R;
 import nl.dermanovus.dermanovus.Schermen.CustomCameraView;
@@ -89,6 +94,9 @@ public class DermaCamActivity extends AppCompatActivity {
             return false;
         }
     };
+
+    //  Standaard camera implementatie
+    private static final int CAMERA_REQUEST = 3376;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -175,7 +183,12 @@ public class DermaCamActivity extends AppCompatActivity {
     }
 
     public void btnBegrepen_Click(View view) {
+        openStandaardCamera();
+
+        //  TODO implement custom camera view including taking pictures with it and previewing and
+        //  TODO reviewing the images.
         //  Maak de afbeelding overlay controls onzichtbaar
+        /*
         View overlayControls = findViewById(R.id.frameLayoutOverlay);
         overlayControls.setVisibility(View.INVISIBLE);
         overlayControls.setEnabled(false);
@@ -183,43 +196,59 @@ public class DermaCamActivity extends AppCompatActivity {
         //  Maak de camera controls zichtbaar
         View cameraControls = findViewById(R.id.layoutCamera);
         cameraControls.setVisibility(View.VISIBLE);
-    }
-
-    public void btnMaakFoto_Click(View view) {
-        //  Roept de methode aan om een foto te maken
-        Bitmap gemaakteFoto = CustomCameraView.takeAPicture();
-
-        //  TODO
-        //  Foto door middel van GSON aan Shared Preferences toevoegen
-        //  Gebruiker naar ander scherm brengen waar de gebruiker de gemaakte foto kan beoordelen
-
-        /*
-        //  Verandert de source van de imageview zodat men de gemaakte foto kan beoordelen
-        ImageView imageView = (ImageView)findViewById(R.id.iViewGemaakteFoto);
-        imageView.setImageBitmap(gemaakteFoto);
-
-        //  Maak de camera controls onzichtbaar
-        View cameraControls = findViewById(R.id.layoutCamera);
-        cameraControls.setVisibility(View.INVISIBLE);
-
-        //  Maak de controls zichtbaar waar de gebruiker de gemaakte foto kan beoordelen
-        View beoordeelControls = findViewById(R.id.frameLayoutConfirmFoto);
-        beoordeelControls.setVisibility(View.VISIBLE);
         */
     }
 
-    public void btnAccepteer_Click(View view) {
-        //  Foto uit ImageView toevoegen aan shared preferences met behulp van GSON en vervolgens
-        //  teruggaan naar het vorige scherm.
+    public void btnMaakFoto_Click(View view) {
+        //  TODO implement custom camera view including taking pictures with it
+        /*
+        //  Roept de methode aan om een foto te maken
+        CustomCameraView.takeAPicture();
+
+        try {
+            Thread.sleep(2500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        CustomCameraView.takeAPicture();
+        Bitmap gemaakteFoto = CustomCameraView.mBitmap;
+
+        if (gemaakteFoto != null) {
+            //  Add picture to Shared Preferences
+            SharedPreferences sharedPref = getSharedPreferences("Medicijn", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putString("Foto", gemaakteFoto.toString());
+            editor.commit();
+
+            //TODO create own preview screen
+            startActivity(new Intent(this, PreviewScherm.class));
+        }
+        else {
+            System.out.println("Nog steeds null");
+        }
+        */
     }
 
-    public void btnMaakNieuwe_Click(View view) {
-        //  Maak de controls onzichtbaar waar de gebruiker de gemaakte foto kan beoordelen
-        View beoordeelControls = findViewById(R.id.frameLayoutConfirmFoto);
-        beoordeelControls.setVisibility(View.INVISIBLE);
+    //  TODO verwijder standaard camera implementatie en gebruik custom camera preview etc. (zie methoden hierboven)
+    private void openStandaardCamera() {
+        startActivityForResult(new Intent(MediaStore.ACTION_IMAGE_CAPTURE), CAMERA_REQUEST);
+    }
 
-        //  Maak de camera controls weer zichtbaar
-        View cameraControls = findViewById(R.id.layoutCamera);
-        cameraControls.setVisibility(View.INVISIBLE);
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {
+            Bitmap gemaakteFoto = (Bitmap) data.getExtras().get("data");
+
+            //  Add picture to Shared Preferences
+            SharedPreferences sharedPref = getSharedPreferences("NieuweBehandeling", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            //  TODO afhankelijk van al gemaakte foto's aan verschillende properties toevoegen
+            editor.putString("OverzichtFoto", gemaakteFoto.toString());
+            editor.commit();
+
+            //  TODO aanroepen om meerdere foto's na elkaar te maken
+//            this.recreate();
+            startActivity(new Intent(this, Hoofdscherm.class));
+        }
     }
 }
