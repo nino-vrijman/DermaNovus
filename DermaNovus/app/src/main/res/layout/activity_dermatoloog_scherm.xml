@@ -1,0 +1,126 @@
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/DrawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:elevation="7dp"
+    >
+
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/toolbar"
+        >
+    </include>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/backButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/ic_arrow_back_black_18px"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
+        android:onClick="btnToHome"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Specialist"
+        android:id="@+id/tvSpecialist"
+        android:layout_alignTop="@+id/backButton"
+        android:layout_toRightOf="@+id/backButton"
+        android:layout_toEndOf="@+id/backButton"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="44dp"
+        android:textStyle="bold"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/circleView"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:src="@drawable/friendlyface"
+        app:border_width="2dp"
+        app:border_color="@android:color/white"
+        android:layout_below="@+id/tool_bar"
+        android:layout_alignLeft="@+id/backButton"
+        android:layout_alignStart="@+id/backButton" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Naam:"
+        android:id="@+id/tvNaamTexts"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/tool_bar"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="DermaNaam"
+        android:id="@+id/tvDermaNaam"
+        android:layout_marginLeft="12dp"
+        android:layout_alignTop="@+id/tvNaamTexts"
+        android:layout_toRightOf="@+id/tvNaamTexts"
+        android:layout_toEndOf="@+id/tvNaamTexts" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Rating:"
+        android:id="@+id/tvRatingTexts"
+        android:layout_below="@+id/tvNaamTexts"
+        android:layout_alignLeft="@+id/tvNaamTexts"
+        android:layout_alignStart="@+id/tvNaamTexts" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="5/5"
+        android:id="@+id/tvInhoud"
+        android:layout_below="@+id/tvDermaNaam"
+        android:layout_alignLeft="@+id/tvDermaNaam"
+        android:layout_alignStart="@+id/tvDermaNaam" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Over:"
+        android:id="@+id/tvBijsluiterTexts"
+        android:layout_below="@+id/circleView"
+        android:layout_alignLeft="@+id/circleView"
+        android:layout_alignStart="@+id/circleView"
+        android:layout_marginTop="26dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Een heel mooi verhaal over de dermatoloog wat natuurlijk enorm gaaf is om te typen voor hem zelf, niet voor mij maar moet toch wel eventjes kijken of de multi line werkt in de textbox maar ik denk dat dat onderhand wel gelukt is"
+        android:id="@+id/tvBijsluiter"
+        android:layout_marginRight="18dp"
+        android:layout_below="@+id/tvBijsluiterTexts"
+        android:layout_alignLeft="@+id/tvBijsluiterTexts"
+        android:layout_alignStart="@+id/tvBijsluiterTexts"
+        android:minLines="2" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Contact:"
+        android:id="@+id/tvContact"
+        android:layout_below="@+id/tvBijsluiter"
+        android:layout_alignLeft="@+id/tvBijsluiter"
+        android:layout_alignStart="@+id/tvBijsluiter" />
+
+
+</RelativeLayout>

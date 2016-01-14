@@ -1,0 +1,147 @@
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/DrawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:elevation="7dp"
+    >
+
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/toolbar"
+        >
+    </include>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/backButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/ic_arrow_back_black_18px"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
+        android:onClick="btnToHome"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text=""
+        android:id="@+id/tvMedicijnNaam"
+        android:layout_alignTop="@+id/backButton"
+        android:layout_toRightOf="@+id/backButton"
+        android:layout_toEndOf="@+id/backButton"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="44dp"
+        android:textStyle="bold"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/circleView"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:src="@drawable/pic1"
+        app:border_width="2dp"
+        app:border_color="@android:color/white"
+        android:layout_below="@+id/tool_bar"
+        android:layout_alignLeft="@+id/backButton"
+        android:layout_alignStart="@+id/backButton" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Aantal:"
+        android:id="@+id/tvEenheidText"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/tool_bar"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="1"
+        android:id="@+id/tvEenheid"
+        android:layout_marginLeft="12dp"
+        android:layout_alignTop="@+id/tvEenheidText"
+        android:layout_toRightOf="@+id/tvEenheidText"
+        android:layout_toEndOf="@+id/tvEenheidText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Inhoud:"
+        android:id="@+id/tvInhoudTexts"
+        android:layout_below="@+id/tvEenheidText"
+        android:layout_alignLeft="@+id/tvEenheidText"
+        android:layout_alignStart="@+id/tvEenheidText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="200ml"
+        android:id="@+id/tvInhoud"
+        android:layout_below="@+id/tvEenheid"
+        android:layout_alignLeft="@+id/tvEenheid"
+        android:layout_alignStart="@+id/tvEenheid" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Prijs:"
+        android:id="@+id/tvPrijsTexts"
+        android:layout_below="@+id/tvInhoudTexts"
+        android:layout_alignLeft="@+id/tvInhoudTexts"
+        android:layout_alignStart="@+id/tvInhoudTexts" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="$57.99"
+        android:id="@+id/tvPrijs"
+        android:layout_below="@+id/tvInhoud"
+        android:layout_alignLeft="@+id/tvInhoud"
+        android:layout_alignStart="@+id/tvInhoud" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Bijsluiter"
+        android:id="@+id/tvBijsluiterTexts"
+        android:layout_below="@+id/circleView"
+        android:layout_alignLeft="@+id/circleView"
+        android:layout_alignStart="@+id/circleView"
+        android:layout_marginTop="26dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="BijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiterBijsluiter"
+        android:id="@+id/tvBijsluiter"
+        android:layout_marginRight="18dp"
+        android:layout_below="@+id/tvBijsluiterTexts"
+        android:layout_alignLeft="@+id/tvBijsluiterTexts"
+        android:layout_alignStart="@+id/tvBijsluiterTexts"
+        android:minLines="10" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bestelling goedkeuren"
+        android:id="@+id/btnBestellingGoedkeuren"
+        android:layout_below="@+id/tvBijsluiter"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="42dp"
+        android:onClick="btnKeurBestellingGoed"/>
+
+
+</RelativeLayout>

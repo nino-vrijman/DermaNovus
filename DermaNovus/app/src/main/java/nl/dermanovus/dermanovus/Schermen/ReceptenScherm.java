@@ -15,6 +15,7 @@ import android.widget.ListView;
 import java.util.List;
 
 import nl.dermanovus.dermanovus.R;
+import nl.dermanovus.dermanovus.Recept;
 
 public class ReceptenScherm extends AppCompatActivity {
 
@@ -51,6 +52,7 @@ public class ReceptenScherm extends AppCompatActivity {
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putInt("MedicijnID", actieveReceptenID[position]);
                 editor.commit();
+                startActivity(new Intent(ReceptenScherm.this, MedicijnScherm.class));
             }
         });
         //Listview beeindigde recepten toevoegen
@@ -62,10 +64,11 @@ public class ReceptenScherm extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //redirect naar het medicijn
-                SharedPreferences sharedPref  = getSharedPreferences("Behandeling", Context.MODE_PRIVATE);
+                SharedPreferences sharedPref  = getSharedPreferences("Medicijn", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putInt("MedicijnID", beeindigdeReceptenID[position]);
                 editor.commit();
+                startActivity(new Intent(ReceptenScherm.this, MedicijnScherm.class));
             }
         });
     }
