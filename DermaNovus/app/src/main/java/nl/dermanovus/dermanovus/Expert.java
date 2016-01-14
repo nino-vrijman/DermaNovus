@@ -6,8 +6,12 @@ import java.util.Date;
  * @author Nino Vrijman
  */
 public class Expert extends Gebruiker {
-    private String infoOver;
+    public String getTitel() {
+        return titel;
+    }
 
+    private String infoOver;
+    public String titel;
     public String getInfoOver() {
         return infoOver;
     }
@@ -28,8 +32,9 @@ public class Expert extends Gebruiker {
      * @param imageJSON De JSON string van de avatar van een gebruiker.
      * @param infoOver Informatie over een expert.
      */
-    public Expert(int id, String voornaam, String achternaam, Date geboortedatum, String telefoonnummer, String emailadres, String imageJSON, String infoOver) {
+    public Expert(int id, String voornaam, String achternaam, Date geboortedatum, String telefoonnummer, String emailadres, String imageJSON, String infoOver,String titel) {
         super(id, voornaam, achternaam, geboortedatum, telefoonnummer, emailadres, imageJSON);
         this.infoOver = infoOver;
+        this.titel = titel;
     }
 }

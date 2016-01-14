@@ -87,13 +87,14 @@
                     android:layout_marginTop="8dp"
                     android:id="@+id/expert"
                     android:visibility="visible"
-                    android:layout_below="@+id/titel">
+                    android:layout_below="@+id/titel"
+                    android:onClick="btnToExpert">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text="Barry Butsers"
+                        android:text="Jen from Dyk"
                         android:id="@+id/tvGeplaatstDoor"
                         android:layout_alignWithParentIfMissing="false"
                         android:layout_centerVertical="true"
@@ -106,7 +107,7 @@
                         android:id="@+id/circleView"
                         android:layout_width="64dp"
                         android:layout_height="64dp"
-                        android:src="@drawable/friendlyface"
+                        android:src="@drawable/dermajan"
                         app:border_width="2dp"
                         app:border_color="@android:color/white"
                         android:layout_alignParentTop="true"

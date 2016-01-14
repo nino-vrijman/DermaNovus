@@ -1,7 +1,9 @@
 package nl.dermanovus.dermanovus;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -31,7 +33,7 @@ public class Database {
             System.err.println("Cannot create connection");
         }
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://10.3.0.212/", "janvaye117_derma", "stoeptegel");
+            conn = DriverManager.getConnection("jdbc:mysql://janvandijk.me/janvaye117_derma", "janvaye117_derma", "stoeptegel");
             return true;
         } catch (SQLException ex) {
             System.out.println("SQLException: " + ex.getMessage());
@@ -48,10 +50,59 @@ public class Database {
      * @return Return 'true' als de inloggegevens correct zijn, return 'false' als de inloggegevens
      * niet correct zijn
      */
-    public Gebruiker logIn(String gebruikersnaam, String wachtwoord) {
-        return null;
+    public Gebruiker logIn(String gebruikersnaam, String wachtwoord) throws SQLException {
+        Patient patient = null;
+        try {
+            connect();
+            ResultSet rs = conn.prepareStatement("SELECT * FROM Patient WHERE emailadres = \""+gebruikersnaam+ "\" AND wachtwoord = \""+wachtwoord+"\"").executeQuery();
+                while (rs.next()) {
+                    int id = rs.getInt(1);
+                    String voornaam = rs.getString(2);
+                    String achternaam = rs.getString(3);
+                    Date geboorteDatum = rs.getDate(4);
+                    String adres = rs.getString(5);
+                    String postcode = rs.getString(6);
+                    int huisnummer = rs.getInt(7);
+                    String toevoeging = rs.getString(8);
+                    String telefoon = rs.getString(9);
+                    String email = rs.getString(10);
+                    String imgUrl = rs.getString(12);
+                    patient = new Patient(id,voornaam,achternaam,geboorteDatum,telefoon,email,imgUrl,adres,postcode,huisnummer,toevoeging);
+                }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            conn.close();
+        }
+        return patient;
     }
 
+    public Patient getPatient(int PatientID) throws SQLException {
+        Patient patient = null;
+        try {
+            connect();
+            ResultSet rs = conn.prepareStatement("SELECT * FROM Patient WHERE id = \""+PatientID+ "\"").executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt(1);
+                String voornaam = rs.getString(2);
+                String achternaam = rs.getString(3);
+                Date geboorteDatum = rs.getDate(4);
+                String adres = rs.getString(5);
+                String postcode = rs.getString(6);
+                int huisnummer = rs.getInt(7);
+                String toevoeging = rs.getString(8);
+                String telefoon = rs.getString(9);
+                String email = rs.getString(10);
+                String imgUrl = rs.getString(12);
+                patient = new Patient(id,voornaam,achternaam,geboorteDatum,telefoon,email,imgUrl,adres,postcode,huisnummer,toevoeging);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            conn.close();
+        }
+        return patient;
+    }
     /**
      * Legt verbinding met de database en zet de status of een bericht dat tot een behandeling
      * behoort gelezen is door de patiënt.
@@ -176,5 +227,79 @@ public class Database {
      */
     public boolean voegVoorraadToe(Voorraad voorraad, Apotheek apotheek) {
         return false;
+    }
+
+    public Behandeling getBehandeling(int behandelingID) throws SQLException {
+        Behandeling behandeling = null;
+        try {
+            connect();
+            ResultSet rs = conn.prepareStatement("SELECT * FROM Behandeling WHERE id = "+behandelingID+"").executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt(1);
+                String titel = rs.getString(2);
+                java.util.Date startDatum = rs.getDate(5);
+                 String symptoomOmschrijving = rs.getString(6);
+                 String overzichtImageJSON = rs.getString(7);
+                 String middelImageJSON = rs.getString(8);
+                 String closeUpImageJSON = rs.getString(9);
+
+                behandeling = new Behandeling(id,titel,startDatum,symptoomOmschrijving,overzichtImageJSON,middelImageJSON,closeUpImageJSON);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            conn.close();
+        }
+        return behandeling;
+    }
+
+    public Medicijn  getMedicijn(int medicijnID) throws SQLException {
+        Medicijn medicijn = null;
+        try {
+            connect();
+            ResultSet rs = conn.prepareStatement("SELECT * FROM Medicijn WHERE id = "+medicijnID+"").executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt(1);
+                 String naam = rs.getString(2);
+                 String bijsluiter = rs.getString(3);
+                 double prijs = rs.getDouble(4);
+                 String eenheid = rs.getString(5);
+                 int hoeveelheid = rs.getInt(6);
+                 String imageJSON = rs.getString(7);
+                 boolean bestellingGoedgekeurd = false;
+
+                medicijn = new Medicijn(id,naam,bijsluiter,prijs,eenheid,hoeveelheid,imageJSON,bestellingGoedgekeurd);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            conn.close();
+        }
+        return medicijn;
+    }
+
+    public Expert getExpert(int expertID) throws SQLException {
+        Expert expert = null;
+        try {
+            connect();
+            ResultSet rs = conn.prepareStatement("SELECT * FROM Expert WHERE id = "+expertID+"").executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt(1);
+                String titel = rs.getString(2);
+                String voornaam = rs.getString(3);
+                String achternaam = rs.getString(4);
+                java.util.Date geboortedatum = rs.getDate(5);
+                String infoOver = rs.getString(6);
+                String telefoonnummer = rs.getString(7);
+                String emailadres = rs.getString(8);
+                String imageJSON = rs.getString(10);
+                expert = new Expert(id,voornaam,achternaam,geboortedatum,telefoonnummer,emailadres,imageJSON,infoOver,titel);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            conn.close();
+        }
+        return expert;
     }
 }
