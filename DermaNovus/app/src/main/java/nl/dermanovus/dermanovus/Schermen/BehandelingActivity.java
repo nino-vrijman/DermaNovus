@@ -6,11 +6,16 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import nl.dermanovus.dermanovus.Administratie;
 import nl.dermanovus.dermanovus.Behandeling;
@@ -39,6 +44,24 @@ public class BehandelingActivity extends AppCompatActivity {
         startDatum.setText(behandeling.getStartDatum().toString());
         symtoomOmschrijving.setText(behandeling.getSymptoomOmschrijving());
         status.setText("In behandeling");
+        ListView lvBerichten = (ListView) findViewById(R.id.lvBerichten);
+        ArrayList<String> list = new ArrayList<String>();
+        list.add("Begin behandeling bericht");
+        final ArrayAdapter adapter = new ArrayAdapter(this,
+                android.R.layout.simple_list_item_1, list);
+        lvBerichten.setAdapter(adapter);
+        lvBerichten.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                SharedPreferences sharedPref  = getSharedPreferences("Bericht", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putInt("BerichtID", 1);
+                editor.commit();
+                startActivity(new Intent(BehandelingActivity.this, BerichtActivity.class));
+            }
+        });
+
 
     }
 
