@@ -7,9 +7,8 @@
     <string name="title_activity_hoofdscherm">Overzicht</string>
 
     <string name="title_section1">Overzicht</string>
-    <string name="title_section2">Berichten</string>
-    <string name="title_section3">Recepten</string>
-    <string name="title_section4">Uw gegevens</string>
+    <string name="title_section2">Recepten</string>
+    <string name="title_section3">Uw gegevens</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
@@ -42,5 +41,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_dermatoloog_scherm">DermatoloogScherm</string>
     <string name="title_activity_behandeling_scherm">BehandelingScherm</string>
+    <string name="title_activity_uw_gegevens_scherm">UwGegevensScherm</string>
 
 </resources>

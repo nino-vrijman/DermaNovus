@@ -10,7 +10,6 @@ public class Administratie {
     public Administratie(Database db) {
 
     }
-
     public static Administratie getInstance() {
         if (instance == null) {
             instance = new Administratie(db);
@@ -26,7 +25,7 @@ public class Administratie {
      * @return Return 'true' als de inloggegevens correct zijn, return 'false' als de inloggegevens
      * niet correct zijn
      */
-    public boolean logIn(String gebruikersnaam, String wachtwoord) {
+    public Gebruiker logIn(String gebruikersnaam, String wachtwoord) {
         return db.logIn(gebruikersnaam, wachtwoord);
     }
 

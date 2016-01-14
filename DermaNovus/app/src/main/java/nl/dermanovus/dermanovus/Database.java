@@ -1,13 +1,18 @@
 package nl.dermanovus.dermanovus;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 /**
  * @author Nino Vrijman
  */
 public class Database {
     public static Database instance = null;
+    private static Connection conn = null;
 
     public Database() {
-
+        connect();
     }
 
     public static Database getInstance() {
@@ -18,6 +23,23 @@ public class Database {
     }
 
 
+    public static boolean connect() {
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+        } catch (Exception e) {
+            System.err.println("Cannot create connection");
+        }
+        try {
+            conn = DriverManager.getConnection("jdbc:mysql://10.3.0.212/", "janvaye117_derma", "stoeptegel");
+            return true;
+        } catch (SQLException ex) {
+            System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+            return false;
+        }
+    }
     /**
      * Legt verbinding met de database en controleert of de opgegeven inloggegevens correct zijn.
      *
@@ -26,8 +48,8 @@ public class Database {
      * @return Return 'true' als de inloggegevens correct zijn, return 'false' als de inloggegevens
      * niet correct zijn
      */
-    public boolean logIn(String gebruikersnaam, String wachtwoord) {
-        return false;
+    public Gebruiker logIn(String gebruikersnaam, String wachtwoord) {
+        return null;
     }
 
     /**

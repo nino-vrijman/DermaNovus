@@ -35,7 +35,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import nl.dermanovus.dermanovus.Administratie;
 import nl.dermanovus.dermanovus.Gebruiker;
+import nl.dermanovus.dermanovus.Patient;
 import nl.dermanovus.dermanovus.R;
 
 import static android.Manifest.permission.READ_CONTACTS;
@@ -194,12 +196,10 @@ public class LoginScherm extends AppCompatActivity implements LoaderCallbacks<Cu
     }
 
     private boolean isEmailValid(String email) {
-        //TODO: Replace this with your own logic
         return email.contains("@");
     }
 
     private boolean isPasswordValid(String password) {
-        //TODO: Replace this with your own logic
         return password.length() > 4;
     }
 
@@ -302,6 +302,7 @@ public class LoginScherm extends AppCompatActivity implements LoaderCallbacks<Cu
      */
     public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
+        private Administratie adm = Administratie.getInstance();
         private final String mGebruikersnaam;
         private final String mWachtwoord;
         private Gebruiker ingelogdeGebruiker;
@@ -318,6 +319,7 @@ public class LoginScherm extends AppCompatActivity implements LoaderCallbacks<Cu
             //  TODO leg verbinding met Database via Administratie klasse
             // ingelogdeGebruiker = DATABASEQUERYUITVOEREN
 
+            /*
             try {
                 // Simulate network access.
                 Thread.sleep(2000);
@@ -331,6 +333,12 @@ public class LoginScherm extends AppCompatActivity implements LoaderCallbacks<Cu
                     // Account exists, return true if the password matches.
                     return pieces[1].equals(mWachtwoord);
                 }
+            }
+            */
+            ingelogdeGebruiker = (Patient)adm.logIn(mGebruikersnaam, mWachtwoord);
+
+            if (ingelogdeGebruiker != null) {
+                return true;
             }
 
             // TODO: register the new account here.
@@ -348,7 +356,7 @@ public class LoginScherm extends AppCompatActivity implements LoaderCallbacks<Cu
                 SharedPreferences pref = getSharedPreferences("User", MODE_PRIVATE);
                 SharedPreferences.Editor editor = pref.edit();
                 //  TODO uncomment de regel hieronder als de Database werkt
-//                editor.putInt("GebruikerID", ingelogdeGebruiker.getId());
+                editor.putInt("GebruikerID", ingelogdeGebruiker.getId());
                 editor.putInt("GebruikerID", 1);
                 editor.commit();
 

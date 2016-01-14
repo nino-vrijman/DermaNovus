@@ -1,0 +1,165 @@
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/DrawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:elevation="7dp"
+    >
+
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/toolbar"
+        >
+    </include>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/backButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/ic_arrow_back_black_18px"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
+        android:onClick="btnBackHome"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Uw gegevens"
+        android:id="@+id/tvSpecialist"
+        android:layout_alignTop="@+id/backButton"
+        android:layout_toRightOf="@+id/backButton"
+        android:layout_toEndOf="@+id/backButton"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="44dp"
+        android:textStyle="bold"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/circleView"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:src="@drawable/patient"
+        app:border_width="2dp"
+        app:border_color="@android:color/white"
+        android:layout_below="@+id/tool_bar"
+        android:layout_alignLeft="@+id/backButton"
+        android:layout_alignStart="@+id/backButton" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Klant naam"
+        android:id="@+id/tvKlantNaam"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="130dp"
+        android:layout_below="@+id/tool_bar"
+    />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="geboortedatum"
+        android:id="@+id/tvKlantGeboorteDatum"
+        android:layout_marginTop="7dp"
+        android:layout_marginLeft="130dp"
+        android:layout_below="@+id/tvKlantNaam" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Adres"
+        android:id="@+id/tvAdresTexts"
+        android:layout_below="@+id/circleView"
+        android:layout_alignLeft="@+id/circleView"
+        android:layout_alignStart="@+id/circleView"
+        android:layout_marginTop="26dp" />
+
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPostalAddress"
+        android:ems="10"
+        android:id="@+id/etAdres"
+        android:layout_above="@+id/tvContact"
+        android:layout_alignLeft="@+id/tvKlantGeboorteDatum"
+        android:layout_alignStart="@+id/tvKlantGeboorteDatum" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Postcode"
+        android:id="@+id/tvContact"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/tvAdresTexts"
+        android:layout_alignLeft="@+id/tvAdresTexts"
+        android:layout_alignStart="@+id/tvAdresTexts" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPostalAddress"
+        android:ems="10"
+        android:id="@+id/etPostcode"
+        android:layout_alignBottom="@+id/tvContact"
+        android:layout_alignLeft="@+id/etAdres"
+        android:layout_alignStart="@+id/etAdres" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Telefoon"
+        android:id="@+id/tvTelefoonNr"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/etPostcode"
+        android:layout_alignLeft="@+id/tvAdresTexts"
+        android:layout_alignStart="@+id/tvAdresTexts" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPostalAddress"
+        android:ems="10"
+        android:id="@+id/etTelefoonNr"
+        android:layout_alignBottom="@+id/tvTelefoonNr"
+        android:layout_alignLeft="@+id/etAdres"
+        android:layout_alignStart="@+id/etAdres" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Email"
+        android:id="@+id/tvEmail"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/tvTelefoonNr"
+        android:layout_alignLeft="@+id/tvAdresTexts"
+        android:layout_alignStart="@+id/tvAdresTexts" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPostalAddress"
+        android:ems="10"
+        android:id="@+id/etEmail"
+        android:layout_alignBottom="@+id/tvEmail"
+        android:layout_alignLeft="@+id/etAdres"
+        android:layout_alignStart="@+id/etAdres" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update info"
+        android:id="@+id/button3"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/etPostcode"
+        android:layout_alignStart="@+id/etPostcode"
+        android:layout_marginBottom="70dp" />
+
+</RelativeLayout>

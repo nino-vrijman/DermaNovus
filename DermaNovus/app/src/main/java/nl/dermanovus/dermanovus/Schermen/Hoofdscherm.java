@@ -25,7 +25,7 @@ public class Hoofdscherm extends AppCompatActivity implements NavigationDrawerFr
 
     //Titels van de navigatie drawer aanmaken
     //Optionele icons van de navigatie items deze staan op dit moment uit
-    String TITLES[] = {"Overzicht","Berichten","Recepten","Uw gegevens"};
+    String TITLES[] = {"Overzicht","Recepten","Uw gegevens"};
     int ICONS[] = {R.drawable.ic_home,R.drawable.ic_home,R.drawable.ic_home,R.drawable.ic_home};
     //String en email voor de navigatie drawer
     String NAME = "Kevin Jetten";
@@ -95,14 +95,13 @@ public class Hoofdscherm extends AppCompatActivity implements NavigationDrawerFr
                             break;
                         case 2:
                             //StartActivity Berichten
+                            startActivity(new Intent(Hoofdscherm.this,ReceptenScherm.class));
                             break;
                         case 3:
                             //StartActivity Recepten
-                            startActivity(new Intent(Hoofdscherm.this,ReceptenScherm.class));
+                            startActivity(new Intent(Hoofdscherm.this,UwGegevensScherm.class));
                             break;
-                        case 4:
-                            //StartActivty UwGegevens
-                            startActivity(new Intent(Hoofdscherm.this, DermaCamActivity.class));
+                        default:
                             break;
                     }
                     return true;

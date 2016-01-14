@@ -15,6 +15,18 @@ public abstract class Gebruiker {
     private String imageJSON;
     private Administratie adm;
 
+    public Date getGeboortedatum() {
+        return geboortedatum;
+    }
+
+    public String getAchternaam() {
+        return achternaam;
+    }
+
+    public String getVoornaam() {
+        return voornaam;
+    }
+
     public int getId() {
         return id;
     }

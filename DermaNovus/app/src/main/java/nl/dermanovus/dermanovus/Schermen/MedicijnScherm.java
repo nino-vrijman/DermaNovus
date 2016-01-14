@@ -25,7 +25,7 @@ public class MedicijnScherm extends AppCompatActivity {
         SharedPreferences sharedPref = getSharedPreferences("Medicijn", Context.MODE_PRIVATE);
         medicijnID = sharedPref.getInt("MedicijnID",0);
          //todo Database het medicijn ophalen met het medicijn ID
-        medicijn = new Medicijn(medicijnID,"Medicijn naam","bijsluiter wolla veel text kijk mij mamma",63.39, 1, 200, "imagestring",true);
+        medicijn = new Medicijn(medicijnID,"Immerin","bijsluiter wolla veel text kijk mij mamma",63.39, 1, 200, "imagestring",true);
         TextView tvMedicijnNaam = (TextView)findViewById(R.id.tvMedicijnNaam);
         tvMedicijnNaam.setText(medicijn.getNaam());
         //vul de informatie van het medicijn met het medicijn wat in de shared preference staat

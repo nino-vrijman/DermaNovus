@@ -51,7 +51,11 @@
         <activity android:name=".Schermen.PreviewScherm" />
         <activity android:name=".Schermen.BehandelingActivity" />
         <activity android:name=".Schermen.BerichtActivity" />
-        <activity android:name=".Schermen.NieuwBerichtActivity"></activity>
+        <activity android:name=".Schermen.NieuwBerichtActivity" />
+        <activity
+            android:name=".Schermen.UwGegevensScherm"
+            android:label="@string/title_activity_uw_gegevens_scherm" >
+        </activity>
     </application>
 
 </manifest>
