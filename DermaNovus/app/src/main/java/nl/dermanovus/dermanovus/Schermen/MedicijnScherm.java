@@ -10,8 +10,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import java.sql.SQLException;
+
+import nl.dermanovus.dermanovus.Administratie;
 import nl.dermanovus.dermanovus.Medicijn;
 import nl.dermanovus.dermanovus.R;
 
@@ -25,27 +27,34 @@ public class MedicijnScherm extends AppCompatActivity {
         SharedPreferences sharedPref = getSharedPreferences("Medicijn", Context.MODE_PRIVATE);
         medicijnID = sharedPref.getInt("MedicijnID",0);
          //todo Database het medicijn ophalen met het medicijn ID
-        medicijn = new Medicijn(medicijnID,"Immerin","bijsluiter wolla veel text kijk mij mamma",63.39, 1, 200, "imagestring",true);
+       // medicijn = new Medicijn(medicijnID,"Immerin","bijsluiter wolla veel text kijk mij mamma",63.39, 1, 200, "imagestring",true);
+        try {
+            medicijn = Administratie.getInstance().getMedicijn(medicijnID);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         TextView tvMedicijnNaam = (TextView)findViewById(R.id.tvMedicijnNaam);
         tvMedicijnNaam.setText(medicijn.getNaam());
         //vul de informatie van het medicijn met het medicijn wat in de shared preference staat
         TextView tvMedicijnEenheid = (TextView)findViewById(R.id.tvEenheid);
         TextView tvMedicijnInhoud = (TextView)findViewById(R.id.tvInhoud);
         TextView tvMedicijnPrijs = (TextView)findViewById(R.id.tvPrijs);
-        TextView tvMedicijnBijsluiter = (TextView)findViewById(R.id.tvBijsluiter);
+        TextView tvMedicijnBijsluiter = (TextView)findViewById(R.id.tvOverDermatoloog);
         tvMedicijnEenheid.setText(""+medicijn.getEenheid());
-        tvMedicijnInhoud.setText(medicijn.getHoeveelheid()+"mg");
+        tvMedicijnInhoud.setText(medicijn.getHoeveelheid()+medicijn.getEenheid());
         tvMedicijnPrijs.setText("€"+medicijn.getPrijs());
         tvMedicijnBijsluiter.setText(medicijn.getBijsluiter());
         //de knop goed zetten of de bestelling al is goed gekeurd of niet
         Button bestellingGoedkeuren = (Button) findViewById(R.id.btnBestellingGoedkeuren);
         if(medicijn.isBestellingGoedgekeurd()){
-            bestellingGoedkeuren.setText("Bestelling goedgekeurd");
-            bestellingGoedkeuren.setEnabled(false);
-        }
-        else{
-            bestellingGoedkeuren.setText("Bestelling goedgekeuren");
-            bestellingGoedkeuren.setEnabled(true);
+            if(!medicijn.isBestellingGoedgekeurd()){
+                bestellingGoedkeuren.setText("Bestelling goedkeuren");
+                bestellingGoedkeuren.setEnabled(false);
+            }
+            else{
+                bestellingGoedkeuren.setText("Bestelling goedgekeurd");
+                bestellingGoedkeuren.setEnabled(false);
+            }
         }
     }
 

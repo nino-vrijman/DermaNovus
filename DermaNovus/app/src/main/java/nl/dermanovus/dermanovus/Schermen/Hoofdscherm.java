@@ -18,18 +18,23 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import java.sql.SQLException;
+
+import nl.dermanovus.dermanovus.Administratie;
+import nl.dermanovus.dermanovus.Patient;
 import nl.dermanovus.dermanovus.R;
 
 
 public class Hoofdscherm extends AppCompatActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
+
+
     //Titels van de navigatie drawer aanmaken
     //Optionele icons van de navigatie items deze staan op dit moment uit
     String TITLES[] = {"Overzicht","Recepten","Uw gegevens"};
     int ICONS[] = {R.drawable.ic_home,R.drawable.ic_home,R.drawable.ic_home,R.drawable.ic_home};
-    //String en email voor de navigatie drawer
-    String NAME = "Kevin Jetten";
-    String EMAIL = "Jetten.Kevin@gmail.com";
+
     //Profielfoto
     int PROFILE = R.drawable.friendlyface;
 
@@ -46,21 +51,31 @@ public class Hoofdscherm extends AppCompatActivity implements NavigationDrawerFr
     ListView actieveBehandelingen;
     ListView beeindigdeBehandingen;
     //Stringarray voor de behandelingen
-    String[] actieveBehandelingenTitel = {"Exceem op linkerarm","Verdachte moedervlek"};
-    String[] beeindigdeBehandlingenTitel = {"Wratje op voet","Verdachte moedervlek"};
+    String[] actieveBehandelingenTitel = {"Uitslag onder oksel","Uitslag boven de navel."};
+    String[] beeindigdeBehandlingenTitel = {"Gekleurde huid",};
     String[] actieveBehandelingOmschrijving = {"Verstuur foto","Wordt behandeld"};
-    String[] beeindigdeBehandelingOmschrijving = {"Voltooid 13 Januari 2015","Doorverwezen ziekenhuis"};
+    String[] beeindigdeBehandelingOmschrijving = {"Voltooid 13 Januari 2015"};
     Integer[] actieveBehandelingenID = {1,2};
-    Integer[] beeindigdeBehandelingenID = {1,2};
+    Integer[] beeindigdeBehandelingenID = {3};
     //Images voor de behandelingen
-    Integer[] actieveBehandelingenImg = {R.drawable.pic1, R.drawable.omeprazol};
-    Integer[] beeindigdeBehandelingenImg = {R.drawable.pic1, R.drawable.omeprazol};
+    Integer[] actieveBehandelingenImg = {R.drawable.uitslag, R.drawable.naveluitslag};
+    Integer[] beeindigdeBehandelingenImg = {R.drawable.gekleurdevlek};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hoofdscherm);
- 
+
+        Patient patient = null;
+        SharedPreferences sharedPref = getSharedPreferences("User", Context.MODE_PRIVATE);
+        int patientID = sharedPref.getInt("GebruikerID",0);
+        try {
+            patient = Administratie.getInstance().getPatient(patientID);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
     /* Assinging the toolbar object ot the view
     and setting the the Action bar to our toolbar
      */
@@ -69,7 +84,7 @@ public class Hoofdscherm extends AppCompatActivity implements NavigationDrawerFr
 
         mRecyclerView = (RecyclerView) findViewById(R.id.RecyclerView); // Assigning the RecyclerView Object to the xml View
         mRecyclerView.setHasFixedSize(true);                            // Letting the system know that the list objects are of fixed size
-        mAdapter = new NavigatorCustomAdapter(TITLES,ICONS,NAME,EMAIL,PROFILE);       // Creating the Adapter of NavigatorCustomAdapter class(which we are going to see in a bit)
+        mAdapter = new NavigatorCustomAdapter(TITLES,ICONS,patient.getVoornaam()+""+patient.getAchternaam(),patient.getEmailadres(),PROFILE);       // Creating the Adapter of NavigatorCustomAdapter class(which we are going to see in a bit)
         // And passing the titles,icons,header view name, header view email,
         // and header view profile picture
 
@@ -169,16 +184,17 @@ public class Hoofdscherm extends AppCompatActivity implements NavigationDrawerFr
         beeindigdeBehandingen.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String Selecteditem= beeindigdeBehandlingenTitel[position];
+                String Selecteditem = beeindigdeBehandlingenTitel[position];
                 Toast.makeText(getApplicationContext(), Selecteditem, Toast.LENGTH_SHORT).show();
                 //TODO redirecten van de activity naar Behandeling met ID in shared preference
-                SharedPreferences sharedPref  = getSharedPreferences("Behandeling", Context.MODE_PRIVATE);
+                SharedPreferences sharedPref = getSharedPreferences("Behandeling", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putInt("BehandelingID", beeindigdeBehandelingenID[position]);
                 editor.commit();
                 startActivity(new Intent(Hoofdscherm.this, BehandelingActivity.class));
             }
         });
+
     }
 
 

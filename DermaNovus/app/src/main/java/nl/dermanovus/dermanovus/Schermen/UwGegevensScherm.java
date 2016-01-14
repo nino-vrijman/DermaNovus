@@ -1,6 +1,8 @@
 package nl.dermanovus.dermanovus.Schermen;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 import java.sql.Date;
+import java.sql.SQLException;
 
 import nl.dermanovus.dermanovus.Administratie;
 import nl.dermanovus.dermanovus.Gebruiker;
@@ -26,7 +29,14 @@ public class UwGegevensScherm extends AppCompatActivity {
 
         setContentView(R.layout.activity_uw_gegevens_scherm);
 
-        patient = new Patient(1, "Peter","de Boer", Date.valueOf("1950-3-20"),"0674928375","kappa@hotmail.com","empty","overdeberg","3721BE",2,"a");
+        SharedPreferences sharedPref = getSharedPreferences("User", Context.MODE_PRIVATE);
+        int patientID = sharedPref.getInt("GebruikerID",0);
+   //     patient = new Patient(1, "Peter","de Boer", Date.valueOf("1950-3-20"),"0674928375","kappa@hotmail.com","empty","overdeberg","3721BE",2,"a");
+        try {
+            patient = Administratie.getInstance().getPatient(patientID);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         TextView tvNaam = (TextView)findViewById(R.id.tvKlantNaam);
         TextView tvGeboorteDatum = (TextView)findViewById(R.id.tvKlantGeboorteDatum);
         EditText etAdres = (EditText)findViewById(R.id.etAdres);

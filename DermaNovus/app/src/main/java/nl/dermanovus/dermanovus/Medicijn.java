@@ -8,7 +8,7 @@ public class Medicijn {
     private String naam;
     private String bijsluiter;
     private double prijs;
-    private int eenheid;
+    private String eenheid;
     private int hoeveelheid;
     private String imageJSON;
     private boolean bestellingGoedgekeurd;
@@ -23,7 +23,7 @@ public class Medicijn {
      * @param hoeveelheid De hoeveelheid (van de eenheid) van een medicijn.
      * @param imageJSON De JSON string van een afbeelding van een medicijn.
      */
-    public Medicijn(int id, String naam, String bijsluiter, double prijs, int eenheid, int hoeveelheid, String imageJSON, boolean bestellingGoedgekeurd) {
+    public Medicijn(int id, String naam, String bijsluiter, double prijs, String eenheid, int hoeveelheid, String imageJSON, boolean bestellingGoedgekeurd) {
         this.id = id;
         this.naam = naam;
         this.bijsluiter = bijsluiter;
@@ -36,7 +36,7 @@ public class Medicijn {
     public String getNaam(){
         return naam;
     }
-    public int getEenheid(){
+    public String getEenheid(){
         return eenheid;
     }
     public int getHoeveelheid(){
