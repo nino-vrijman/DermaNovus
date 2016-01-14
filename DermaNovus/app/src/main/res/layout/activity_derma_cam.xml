@@ -8,7 +8,7 @@
     <!-- Laat de camera activity zien-->
     <nl.dermanovus.dermanovus.Schermen.CustomCameraView
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="fill_parent">
     </nl.dermanovus.dermanovus.Schermen.CustomCameraView>
 
     <!-- The primary full-screen view. This can be replaced with whatever view
@@ -75,48 +75,6 @@
                 android:id="@+id/iViewJohnCena"
                 android:layout_gravity="center"
                 android:src="@drawable/john_cena"/>
-        </FrameLayout>
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/frameLayoutConfirmFoto"
-            android:visibility="invisible">
-
-            <LinearLayout
-                style="?metaButtonBarStyle"
-                tools:ignore="UselessParent"
-                android:id="@+id/layoutConfirmButtons"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|center_horizontal"
-                android:background="@color/black_overlay"
-                android:orientation="horizontal" >
-
-                <Button
-                    style="?metaButtonBarButtonStyle"
-                    android:id="@+id/btnAccepteer"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Accepteer"
-                    android:onClick="btnAccepteer_Click" />
-
-                <Button
-                    style="?metaButtonBarButtonStyle"
-                    android:id="@+id/btnMaakNieuw"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Maak nieuwe"
-                    android:onClick="btnMaakNieuwe_Click" />
-            </LinearLayout>
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/iViewGemaakteFoto" />
-
         </FrameLayout>
 
     </FrameLayout>

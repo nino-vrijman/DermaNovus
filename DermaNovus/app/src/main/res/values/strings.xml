@@ -41,4 +41,6 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_dermatoloog_scherm">DermatoloogScherm</string>
+    <string name="title_activity_behandeling_scherm">BehandelingScherm</string>
+
 </resources>
