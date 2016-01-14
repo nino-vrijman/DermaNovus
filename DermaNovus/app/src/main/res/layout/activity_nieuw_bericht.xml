@@ -61,9 +61,18 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/imageViews"
+        android:layout_alignTop="@+id/buttons">
+
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom" >
+        android:layout_gravity="bottom"
+        android:id="@+id/buttons">
 
         <Button
             style="?android:textAppearanceSmall"
@@ -102,6 +111,33 @@
             android:layout_above="@+id/btnPlaatsReactie"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/btnVoegFotosToe">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView"
+                android:layout_alignTop="@+id/btnVoegFotosToe" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView2"
+                android:layout_alignTop="@+id/btnVoegFotosToe"
+                android:layout_toRightOf="@+id/imageView" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView3"
+                android:layout_alignTop="@+id/btnVoegFotosToe"
+                android:layout_toRightOf="@+id/imageView2" />
+        </RelativeLayout>
+
     </RelativeLayout>
 
 </RelativeLayout>

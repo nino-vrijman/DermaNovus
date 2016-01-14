@@ -5,44 +5,6 @@
     android:layout_height="match_parent"
     tools:context="nl.dermanovus.dermanovus.Schermen.PreviewScherm">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/frameLayout"
-        android:visibility="invisible"
-        android:layout_gravity="bottom|center_horizontal">
-
-        <LinearLayout
-            style="?metaButtonBarStyle"
-            tools:ignore="UselessParent"
-            android:id="@+id/linearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:background="@color/black_overlay"
-            android:orientation="horizontal" >
-
-            <Button
-                style="?metaButtonBarButtonStyle"
-                android:id="@+id/button"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Accepteer"
-                android:onClick="btnAccepteer_Click" />
-
-            <Button
-                style="?metaButtonBarButtonStyle"
-                android:id="@+id/button2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Maak nieuwe"
-                android:onClick="btnMaakNieuwe_Click" />
-        </LinearLayout>
-
-    </FrameLayout>
-
     <include
         android:id="@+id/tool_bar"
         layout="@layout/toolbar"
@@ -61,5 +23,60 @@
         android:layout_marginTop="16dp"
         android:background="@android:color/transparent"
         android:onClick="btnHome"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_gravity="bottom">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ivPreview"
+            android:layout_gravity="center" />
+
+        <Button
+            style="?android:textAppearanceSmall"
+            android:id="@+id/btnKeurFotoGoed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="keur goed"
+            android:textStyle="bold"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:paddingBottom="0dp"
+            android:background="#71b0b1"
+            android:textColor="#f5f5f5"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:onClick="btnKeurFotoGoed_Click"
+            android:nestedScrollingEnabled="true"
+            android:layout_weight="0.5"
+            android:layout_gravity="bottom" />
+
+        <Button
+            style="?android:textAppearanceSmall"
+            android:id="@+id/btnKeurFotoAf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="maak nieuwe"
+            android:textStyle="bold"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:paddingBottom="0dp"
+            android:background="#71b0b1"
+            android:textColor="#f5f5f5"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:onClick="btnKeurFotoAf_Click"
+            android:nestedScrollingEnabled="true"
+            android:layout_toRightOf="@+id/btnKeurFotoGoed"
+            android:layout_weight="0.5"
+            android:layout_gravity="bottom" />
+
+    </LinearLayout>
 
 </FrameLayout>
