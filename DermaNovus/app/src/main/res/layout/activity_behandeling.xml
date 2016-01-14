@@ -190,11 +190,22 @@
                         android:layout_alignBottom="@+id/textView7"
                         android:layout_toRightOf="@+id/textView7"
                         android:layout_toEndOf="@+id/textView7" />
+
+
                 </RelativeLayout>
 
             </RelativeLayout>
 
         </LinearLayout>
+
     </ScrollView>
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lvBerichten"
+        android:layout_alignBottom="@+id/tvStatus"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="400dp"/>
 
 </RelativeLayout>
