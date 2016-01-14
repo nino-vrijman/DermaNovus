@@ -23,16 +23,16 @@ public class ReceptenScherm extends AppCompatActivity {
     ListView actieveRecepten;
     ListView beeindigdeRecepten;
     //String arrays voor de recepten
-    String[] actieveReceptenTitel = {"Immerin 20mg","Differin 120mg"};
+    String[] actieveReceptenTitel = {"Differin","Truvada"};
     String[] actieveReceptenOmschrijving = {"Bevestig bestelling - Jan 9, 2015", "Tot 29 januari 2015"};
-    String[] beeindigdeReceptenTitel = {"Ibuprofen 50mg","Innerin 12mg"};
-    String[] beeindigdeReceptenOmschrijving = {"Beëindigd 04 januari 2015","Beëindigd 27 december 2015"};
+    String[] beeindigdeReceptenTitel = {"Omeprazol"};
+    String[] beeindigdeReceptenOmschrijving = {"Beëindigd 04 januari 2015"};
     //Image arrays voor de recepten
-    Integer[] actieveReceptenImg = {R.drawable.omeprazol,R.drawable.pic1};
-    Integer[] beeindigdeReceptenImg = {R.drawable.omeprazol,R.drawable.pic1};
+    Integer[] actieveReceptenImg = {R.drawable.differin,R.drawable.truvada};
+    Integer[] beeindigdeReceptenImg = {R.drawable.omeprazol};
     //IDs van de recepten in de volgorde van dat ze in de listview staan
     Integer[] actieveReceptenID = {1,2};
-    Integer[] beeindigdeReceptenID = {1,2};
+    Integer[] beeindigdeReceptenID = {3};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

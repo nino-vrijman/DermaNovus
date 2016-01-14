@@ -9,6 +9,51 @@ import java.util.Date;
 public class Behandeling {
     private int id;
     private String titel;
+
+    public int getId() {
+        return id;
+    }
+
+    public Date getStartDatum() {
+        return startDatum;
+    }
+
+    public String getSymptoomOmschrijving() {
+        return symptoomOmschrijving;
+    }
+
+    public String getOverzichtImageJSON() {
+        return overzichtImageJSON;
+    }
+
+    public String getMiddelImageJSON() {
+        return middelImageJSON;
+    }
+
+    public String getCloseUpImageJSON() {
+        return closeUpImageJSON;
+    }
+
+    public double getBeoordelingExpert() {
+        return beoordelingExpert;
+    }
+
+    public Expert getExpert() {
+        return expert;
+    }
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public ArrayList<Recept> getRecepten() {
+        return recepten;
+    }
+
+    public ArrayList<Bericht> getBerichten() {
+        return berichten;
+    }
+
     private Date startDatum;
     private String symptoomOmschrijving;
     private String overzichtImageJSON;
@@ -71,7 +116,15 @@ public class Behandeling {
         this.berichten = new ArrayList<>();
         this.adm = Administratie.getInstance();
     }
-
+    public Behandeling(int id, String titel, Date startDatum, String symptoomOmschrijving, String overzichtImageJSON, String middelImageJSON, String closeUpImageJSON) {
+        this.id = id;
+        this.titel = titel;
+        this.startDatum = startDatum;
+        this.symptoomOmschrijving = symptoomOmschrijving;
+        this.overzichtImageJSON = overzichtImageJSON;
+        this.middelImageJSON = middelImageJSON;
+        this.closeUpImageJSON = closeUpImageJSON;
+    }
     /**
      * Plaats een nieuw bericht dat bij een behandeling hoort.
      *

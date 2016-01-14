@@ -42,7 +42,7 @@
         android:id="@+id/circleView"
         android:layout_width="96dp"
         android:layout_height="96dp"
-        android:src="@drawable/friendlyface"
+        android:src="@drawable/dermajan"
         app:border_width="2dp"
         app:border_color="@android:color/white"
         android:layout_below="@+id/tool_bar"
@@ -106,7 +106,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Een heel mooi verhaal over de dermatoloog wat natuurlijk enorm gaaf is om te typen voor hem zelf, niet voor mij maar moet toch wel eventjes kijken of de multi line werkt in de textbox maar ik denk dat dat onderhand wel gelukt is"
-        android:id="@+id/tvBijsluiter"
+        android:id="@+id/tvOverDermatoloog"
         android:layout_marginRight="18dp"
         android:layout_below="@+id/tvBijsluiterTexts"
         android:layout_alignLeft="@+id/tvBijsluiterTexts"
@@ -118,9 +118,32 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Contact:"
         android:id="@+id/tvContact"
-        android:layout_below="@+id/tvBijsluiter"
-        android:layout_alignLeft="@+id/tvBijsluiter"
-        android:layout_alignStart="@+id/tvBijsluiter" />
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/tvOverDermatoloog"
+        android:layout_alignLeft="@+id/tvOverDermatoloog"
+        android:layout_alignStart="@+id/tvOverDermatoloog" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/tvExpertEmail"
+        android:minLines="1"
+        android:layout_below="@+id/tvContact"
+        android:layout_alignLeft="@+id/tvContact"
+        android:layout_alignStart="@+id/tvContact"
+        android:text="email@derma.com" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/tvExpertTelnummer"
+        android:minLines="1"
+        android:text="Telnummer"
+        android:layout_below="@+id/tvExpertEmail"
+        android:layout_alignLeft="@+id/tvExpertEmail"
+        android:layout_alignStart="@+id/tvExpertEmail" />
 
 
 </RelativeLayout>

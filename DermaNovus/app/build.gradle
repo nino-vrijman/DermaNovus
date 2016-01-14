@@ -30,5 +30,6 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:1.2.1'
     compile 'com.android.support:recyclerview-v7:23.1.1'
     compile 'com.android.support:design:23.1.1'
+    compile files('lib/mysql-connector-java-3.0.17-ga-bin.jar')
     compile 'com.google.code.gson:gson:2.5'
 }

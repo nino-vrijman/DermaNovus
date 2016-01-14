@@ -1,5 +1,7 @@
 package nl.dermanovus.dermanovus;
 
+import java.sql.SQLException;
+
 /**
  * @author Nino Vrijman
  */
@@ -25,10 +27,16 @@ public class Administratie {
      * @return Return 'true' als de inloggegevens correct zijn, return 'false' als de inloggegevens
      * niet correct zijn
      */
-    public Gebruiker logIn(String gebruikersnaam, String wachtwoord) {
+    public Gebruiker logIn(String gebruikersnaam, String wachtwoord) throws SQLException {
         return db.logIn(gebruikersnaam, wachtwoord);
     }
 
+    public Patient getPatient(int patientID) throws SQLException {
+        return db.getPatient(patientID);
+    }
+    public Behandeling getBehandeling(int behandelingID) throws SQLException{
+        return db.getBehandeling(behandelingID);
+    }
     /**
      * Zet via de database klasse de status of een bericht dat tot een behandeling behoort gelezen
      * is door de patiënt.
@@ -153,5 +161,13 @@ public class Administratie {
      */
     public boolean voegVoorraadToe(Voorraad voorraad, Apotheek apotheek) {
         return db.voegVoorraadToe(voorraad, apotheek);
+    }
+
+    public Medicijn getMedicijn(int medicijnID) throws SQLException {
+        return db.getMedicijn(medicijnID);
+    }
+
+    public Expert getExpert(int expertID) throws SQLException {
+        return db.getExpert(expertID);
     }
 }
