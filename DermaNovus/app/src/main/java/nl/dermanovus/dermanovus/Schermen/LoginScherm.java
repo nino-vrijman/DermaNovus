@@ -370,7 +370,8 @@ public class LoginScherm extends AppCompatActivity implements LoaderCallbacks<Cu
                 SharedPreferences.Editor editor = pref.edit();
                 //  TODO uncomment de regel hieronder als de Database werkt
                 editor.putInt("GebruikerID", ingelogdeGebruiker.getId());
-                editor.putInt("GebruikerID", 1);
+//                editor.putInt("GebruikerID", 1);
+                editor.apply();
                 editor.commit();
 
                 mLoginButton.setVisibility(View.VISIBLE);

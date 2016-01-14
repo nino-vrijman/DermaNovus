@@ -1,5 +1,6 @@
 package nl.dermanovus.dermanovus;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -131,7 +132,7 @@ public class Behandeling {
      * @param nieuwBericht Het nieuwe bericht dat geplaatst moet worden.
      * @return Return true als het bericht geplaatst is. Return false als het bericht niet geplaatst is.
      */
-    public boolean plaatsBericht(Bericht nieuwBericht) {
+    public boolean plaatsBericht(Bericht nieuwBericht) throws SQLException {
         if (adm.plaatsBericht(nieuwBericht, this)) {
             this.berichten.add(nieuwBericht);
             return true;

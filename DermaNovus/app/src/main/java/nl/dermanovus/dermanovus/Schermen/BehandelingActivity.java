@@ -12,6 +12,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import org.w3c.dom.Text;
 
 import java.sql.SQLException;
@@ -54,7 +56,7 @@ public class BehandelingActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                SharedPreferences sharedPref  = getSharedPreferences("Bericht", Context.MODE_PRIVATE);
+                SharedPreferences sharedPref = getSharedPreferences("Bericht", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putInt("BerichtID", 1);
                 editor.commit();
@@ -62,6 +64,12 @@ public class BehandelingActivity extends AppCompatActivity {
             }
         });
 
+        SharedPreferences.Editor editor = sharedPref.edit();
+        Gson gson = new Gson();
+        String behandelingString = gson.toJson(behandeling, Behandeling.class);
+        editor.putString("ActieveBehandeling", behandelingString);
+        editor.apply();
+        editor.commit();
 
     }
 

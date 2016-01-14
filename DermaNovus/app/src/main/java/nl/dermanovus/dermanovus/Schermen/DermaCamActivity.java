@@ -258,7 +258,7 @@ public class DermaCamActivity extends AppCompatActivity {
             Bitmap gemaakteFoto = (Bitmap) data.getExtras().get("data");
 
             //  Add picture to Shared Preferences
-            SharedPreferences sharedPref = getSharedPreferences("NIEUWBERICHTACTIVITY", MODE_PRIVATE);
+            SharedPreferences sharedPref = getSharedPreferences("NIEUWEFOTO", MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPref.edit();
             Gson gson = new Gson();
             String gemaakteFotoJSON = gson.toJson(gemaakteFoto);

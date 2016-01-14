@@ -189,8 +189,28 @@ public class Database {
      * @return Return 'true' als het nieuwe bericht succesvol is geplaatst, return 'false' als het
      * nieuwe bericht niet is geplaatst.
      */
-    public boolean plaatsBericht(Bericht ber, Behandeling beh) {
-        return false;
+    public boolean plaatsBericht(Bericht ber, Behandeling beh) throws SQLException {
+        //  QUERY: INSERT INTO `Bericht` (`id`, `ExpertId`, `PatientId`, `BehandelingId`, `inhoud`, `overzichtImageUrl`, `middelImageUrl`, `closeUpImageUrl`) VALUES
+        //  (1, 1, 1, 1, 'Ik heb gekeken naar je probleem en heb je een medicijn voor je uitgeschreven', 'imgurl', 'imgurl', 'imgurl');
+        return true;
+        //  TODO add insert query for databsae
+        /*
+        boolean gelukt = false;
+        try {
+            connect();
+            if (ber.getGeplaatstDoor() instanceof Patient) {
+                conn.createStatement().execute("INSERT INTO Bericht VALUES(NULL ,"+ ber.getGeplaatstDoor().getId() +", 1, "+ ber.getInhoud()+ ", " +ber.getOverzichtImageJSON()+ ", NULL, NULL)");
+            } else {
+                conn.createStatement().execute("INSERT INTO Bericht VALUES("+ber.getGeplaatstDoor().getId()+", NULL, 1, "+ ber.getInhoud()+ ", " +ber.getOverzichtImageJSON()+ ", NULL, NULL)");
+            }
+            gelukt = true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            conn.close();
+        }
+        return gelukt;
+        */
     }
 
     /**
@@ -248,7 +268,9 @@ public class Database {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            conn.close();
+            if (conn != null) {
+                conn.close();
+            }
         }
         return behandeling;
     }
