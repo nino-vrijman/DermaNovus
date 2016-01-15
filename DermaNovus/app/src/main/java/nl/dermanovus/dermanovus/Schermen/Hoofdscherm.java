@@ -167,7 +167,7 @@ public class Hoofdscherm extends AppCompatActivity implements NavigationDrawerFr
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String Selecteditem = actieveBehandelingenTitel[position];
-                Toast.makeText(getApplicationContext(), Selecteditem, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), Selecteditem, Toast.LENGTH_SHORT).show();
                 //TODO redirecten van de activity naar Behandeling met ID in shared preference
                 SharedPreferences sharedPref  = getSharedPreferences("Behandeling", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPref.edit();
@@ -185,7 +185,7 @@ public class Hoofdscherm extends AppCompatActivity implements NavigationDrawerFr
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String Selecteditem = beeindigdeBehandlingenTitel[position];
-                Toast.makeText(getApplicationContext(), Selecteditem, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), Selecteditem, Toast.LENGTH_SHORT).show();
                 //TODO redirecten van de activity naar Behandeling met ID in shared preference
                 SharedPreferences sharedPref = getSharedPreferences("Behandeling", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPref.edit();

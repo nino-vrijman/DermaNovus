@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -86,7 +87,10 @@ public class NieuwBerichtActivity extends AppCompatActivity {
         }
 
         EditText textInvoer = (EditText)findViewById(R.id.editText);
-        Administratie.getInstance().plaatsBericht(new Bericht(-1, textInvoer.getText().toString(), fotoJSON, "", "", false, patient), actBehandeling);
+        boolean gelukt = Administratie.getInstance().plaatsBericht(new Bericht(-1, textInvoer.getText().toString(), fotoJSON, "", "", false, patient), actBehandeling);
+        if (gelukt) {
+            Toast.makeText(this, "Toevoegen is gelukt", Toast.LENGTH_SHORT).show();
+        }
         finish();
     }
 }

@@ -66,8 +66,11 @@ public class CustomCameraView extends SurfaceView implements SurfaceHolder.Callb
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
-        sCamera.stopPreview();
-        sCamera.release();
+        if (sCamera != null) {
+            sCamera.stopPreview();
+            sCamera.release();
+            sCamera = null;
+        }
     }
 
     public static void takeAPicture(){

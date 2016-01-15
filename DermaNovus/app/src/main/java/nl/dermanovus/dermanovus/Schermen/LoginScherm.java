@@ -31,6 +31,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.sql.SQLException;
@@ -72,6 +73,7 @@ public class LoginScherm extends AppCompatActivity implements LoaderCallbacks<Cu
     private View mProgressView;
     private View mLoginFormView;
     private Button mLoginButton;
+    private ImageView mImageViewLogo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,6 +105,8 @@ public class LoginScherm extends AppCompatActivity implements LoaderCallbacks<Cu
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+
+        mImageViewLogo = (ImageView)findViewById(R.id.ivLogo);
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -196,6 +200,7 @@ public class LoginScherm extends AppCompatActivity implements LoaderCallbacks<Cu
             // perform the user login attempt.
             showProgress(true);
             mLoginButton.setVisibility(View.INVISIBLE);
+            mImageViewLogo.setVisibility(View.INVISIBLE);
             mAuthTask = new UserLoginTask(gebruikersnaam, wachtwoord);
             mAuthTask.execute((Void) null);
         }
@@ -382,6 +387,7 @@ public class LoginScherm extends AppCompatActivity implements LoaderCallbacks<Cu
                 mWachtwoordView.setError(getString(R.string.error_verkeerde_inloggegevens));
                 mWachtwoordView.requestFocus();
                 mLoginButton.setVisibility(View.VISIBLE);
+                mImageViewLogo.setVisibility(View.VISIBLE);
             }
         }
 
