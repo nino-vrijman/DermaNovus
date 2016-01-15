@@ -131,7 +131,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentBottom="true"
-            android:onClick="btnReageer_Click"
+            android:onClick="btnReact_Click"
             android:nestedScrollingEnabled="true" />
 
     </RelativeLayout>

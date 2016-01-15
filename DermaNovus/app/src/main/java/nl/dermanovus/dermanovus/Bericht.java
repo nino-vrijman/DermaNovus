@@ -5,7 +5,17 @@ package nl.dermanovus.dermanovus;
  */
 public class Bericht {
     private int id;
+
+    public String getInhoud() {
+        return inhoud;
+    }
+
     private String inhoud;
+
+    public String getOverzichtImageJSON() {
+        return overzichtImageJSON;
+    }
+
     private String overzichtImageJSON;
     private String middelImageJSON;
     private String closeUpImageJSON;

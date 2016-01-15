@@ -2,6 +2,7 @@ package nl.dermanovus.dermanovus.Schermen;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -9,11 +10,17 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
+
+import com.google.gson.Gson;
+
+import java.sql.SQLOutput;
 
 import nl.dermanovus.dermanovus.R;
 import nl.dermanovus.dermanovus.Schermen.CustomCameraView;
@@ -105,6 +112,16 @@ public class DermaCamActivity extends AppCompatActivity {
         setContentView(R.layout.activity_derma_cam);
 
         mVisible = true;
+
+        /*
+        SharedPreferences sharedPreferences = getSharedPreferences("NieuweBehandeling", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.remove("GemaakteFotos");
+        editor.remove("Foto1");
+        editor.remove("Foto2");
+        editor.remove("Foto3");
+        editor.commit();
+        */
 //        mControlsView = findViewById(R.id.fullscreen_content_controls);
 
         /*
@@ -136,7 +153,7 @@ public class DermaCamActivity extends AppCompatActivity {
         // Trigger the initial hide() shortly after the activity has been
         // created, to briefly hint to the user that UI controls
         // are available.
-        delayedHide(100);
+//        delayedHide(100);
     }
 
     private void toggle() {
@@ -232,6 +249,7 @@ public class DermaCamActivity extends AppCompatActivity {
 
     //  TODO verwijder standaard camera implementatie en gebruik custom camera preview etc. (zie methoden hierboven)
     private void openStandaardCamera() {
+
         startActivityForResult(new Intent(MediaStore.ACTION_IMAGE_CAPTURE), CAMERA_REQUEST);
     }
 
@@ -240,15 +258,14 @@ public class DermaCamActivity extends AppCompatActivity {
             Bitmap gemaakteFoto = (Bitmap) data.getExtras().get("data");
 
             //  Add picture to Shared Preferences
-            SharedPreferences sharedPref = getSharedPreferences("NieuweBehandeling", Context.MODE_PRIVATE);
+            SharedPreferences sharedPref = getSharedPreferences("NIEUWEFOTO", MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPref.edit();
-            //  TODO afhankelijk van al gemaakte foto's aan verschillende properties toevoegen
-            editor.putString("OverzichtFoto", gemaakteFoto.toString());
+            Gson gson = new Gson();
+            String gemaakteFotoJSON = gson.toJson(gemaakteFoto);
+            editor.putString("Foto", gemaakteFotoJSON);
+            editor.apply();
             editor.commit();
-
-            //  TODO aanroepen om meerdere foto's na elkaar te maken
-//            this.recreate();
-            startActivity(new Intent(this, Hoofdscherm.class));
+            finish();
         }
     }
 }

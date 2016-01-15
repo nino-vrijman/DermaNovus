@@ -58,12 +58,24 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp" />
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:layout_below="@+id/editText"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp" />
+
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom" >
+        android:layout_gravity="bottom"
+        android:id="@+id/buttons">
 
         <Button
             style="?android:textAppearanceSmall"
@@ -78,7 +90,7 @@
             android:background="#71b0b1"
             android:textColor="#f5f5f5"
             android:layout_gravity="bottom"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentLeft="false"
             android:layout_alignParentStart="true"
             android:layout_alignParentBottom="true"
             android:onClick="btnPlaatsReactie_Click"
@@ -102,6 +114,7 @@
             android:layout_above="@+id/btnPlaatsReactie"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
+
     </RelativeLayout>
 
 </RelativeLayout>

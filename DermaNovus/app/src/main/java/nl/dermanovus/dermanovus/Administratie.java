@@ -123,7 +123,7 @@ public class Administratie {
      * @return Return 'true' als het nieuwe bericht succesvol is geplaatst, return 'false' als het
      * nieuwe bericht niet is geplaatst.
      */
-    public boolean plaatsBericht(Bericht ber, Behandeling beh) {
+    public boolean plaatsBericht(Bericht ber, Behandeling beh) throws SQLException {
         return db.plaatsBericht(ber, beh);
     }
 
